@@ -86,7 +86,7 @@ header {
 .wrapper {
     position: relative;
     width: 400px;
-    height: 440px;
+    height: 480px;
     background: transparent;
     border: 2px solid rgba(225, 255, 255, .5);
     border-radius: 20px;
@@ -255,3 +255,39 @@ header {
 .login-register p a:hover {
     text-decoration: underline;
 }
+.facebook-btn {
+    background: #3b5998;
+}
+
+.facebook-btn:hover {
+    background: #4c69ba;
+}
+
+.google-btn {
+    background: #db4437;
+}
+
+.google-btn:hover {
+    background: #e57373;
+}
+
+.github-btn {
+    background: #333;
+}
+
+.github-btn:hover {
+    background: #444;
+}
+
+.social-btn i {
+    margin-right: 10px;
+}
+
+.correo-btn {
+    background: #ff602b;
+}
+
+.correo-btn:hover {
+    background: #ff602b;
+}
+

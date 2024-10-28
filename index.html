@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website With Login & Registration | Codehal</title>
     <link rel="stylesheet" href="style.css">
+    <script src="/.main.js" type="module"></script>
 </head>
 
 <body>
@@ -34,27 +35,36 @@
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="email" required>
+                    <input type="email" requiredid="sigin-email" >
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" required id="sigin-password">
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot Password?</a>
+                    <a href="x/recuperar.html">Forgot Password?</a>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
                     <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
-                    <div class="social-icons">
-                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn facebook-btn" id="facebookSignIn">
+                            <i class='bx bxl-facebook'></i> Iniciar sesión con Facebook
+                        </button>
+                        <button type="button" class="social-btn google-btn" id="googleSignIn">
+                            <i class='bx bxl-google'></i> Iniciar sesión con Google
+                        </button>
+                        <button type="button" class="social-btn github-btn" id="githubSignIn">
+                            <i class='bx bxl-github'></i> Iniciar sesión con GitHub
+                        </button>
+                        <button type="button" class="social-btn correo-btn" id="correoSignIn">
+                            <i class='bx bxl-correo'></i> Iniciar sesión con Correo
+                        </button>
                     </div>
                 </div>
             </form>
@@ -67,7 +77,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="email" required>
+                    <input type="email" required id="signup-email">
                     <label>Email</label>
                 </div>
                 <div class="input-box">
@@ -81,7 +91,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" required id="signup-password">
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -91,9 +101,7 @@
                 class="btn">Register</button>
                 <div class="login-register"><p>Already have an account?<a href="#" class="login-link">Login</a></p>
                     <div class="social-icons">
-                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        
                 </div>
             </form>
         </div>
@@ -103,6 +111,70 @@
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD5fH4rjaiwaGIDeQyhZ9w9U7JNYis9-jk",
+            authDomain: "login-app-b23a8.firebaseapp.com",
+            projectId: "login-app-b23a8",
+            storageBucket: "login-app-b23a8.appspot.com",
+            messagingSenderId: "120723604968",
+            appId: "1:120723604968:web:b5d3f3329709800eee505d"
+            };
+            
+            const app = firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+        
+            document.getElementById('facebookSignIn').onclick = function() {
+                const provider = new firebase.auth.FacebookAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => {
+                        console.log('Usuario autenticado con Facebook:', result.user);
+                        window.location.href = 'home/home.html'; 
+                    })
+                    .catch((error) => {
+                        console.error('Error al iniciar sesión con Facebook:', error);
+                    });
+            };
+        
+            document.getElementById('googleSignIn').onclick = function() {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => {
+                        console.log('Usuario autenticado con Google:', result.user);
+                        window.location.href = 'home/home.html'; 
+                    })
+                    .catch((error) => {
+                        console.error('Error al iniciar sesión con Google:', error);
+                    });
+            };
+     
+            document.getElementById('githubSignIn').onclick = function() {
+                const provider = new firebase.auth.GithubAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => {
+                        console.log('Usuario autenticado con GitHub:', result.user);
+                        window.location.href = 'home/home.html'; 
+                    })
+                    .catch((error) => {
+                        console.error('Error al iniciar sesión con GitHub:', error);
+                    });
+
+            document.getElementById('correoSignIn').onclick = function() {
+                const provider = new firebase.auth.GithubAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => {
+                        console.log('Usuario autenticado con Correo:', result.user);
+                        window.location.href = 'home/home.html'; 
+                    })
+                    .catch((error) => {
+                        console.error('Error al iniciar sesión con GitHub:', error);
+                    });
+                }
+            };
+        </script>
+  
+    
 </body>
 
 </html>
